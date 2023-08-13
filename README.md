@@ -1,7 +1,7 @@
 # datarhei_Restreamer
 Installation des Datarhei Restreamer auf einem vServer bei Hetzner
 ## Hetzner vServer
-- CAX11 (Arm64 mit 2 vCPUs, 4 GB RAM, 40 GB Disk Lokal) mit Ubuntu 22.04 LTS
+- CX11 (x86 1 vCPUs, 2 GB RAM, 20 GB Disk Lokal) mit Ubuntu 22.04 LTS reicht aus :-)
 - Firewall erstellen und anwenden (UDP: Port 6000 für SRT, TCP 1935-1936 für RTMP, Port 22 für SSH, TCP 8080 und 8181)
 ```
 apt update
@@ -24,3 +24,12 @@ package_upgrade: true
 runcmd:
 - docker run --detach --name core --privileged --volume /opt/core/config:/core/config --volume /opt/core/data:/core/data --publish 8080:8080 --publish 8181:8181 --publish 1935:1935 --publish 1936:1936 --publish 6000:6000/udp datarhei/restreamer:latest
 ```
+Nach wenigen Augenblicken kann bereits die Adminseite des Restreamer über `http://<meineIP>:8080/ui` aufgerufen werden.
+
+### Owncast bei Hetzner
+>lt. Hetzner:
+>Mit dieser App wird Ihr Server zu einem einsatzbereiten Live-Streaming- und Chat-Server. Mit Owncast können Sie von OBS-Studio oder jeder anderen rtmp-Medienquelle streamen.
+
+datarhei Restreamer bietet eine automatische Weiterleitung zu Owncast an, deshalb im Folgenden Infos zur Installation:
+#### Installation
+Hetzner bietet eine fertige Konfiguration an. Einfach neuen Server erstellen, OS (Ubuntu 22.04) und App (Owncast) auswählen und Server erstellen anklicken.
