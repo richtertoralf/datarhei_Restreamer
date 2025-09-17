@@ -17,12 +17,15 @@ docker run --detach --name core --privileged --volume /opt/core/config:/core/con
 ### Installation per Cloud-init Konfiguration
 ```
 #cloud-config
+package_update: true
+package_upgrade: false
 packages:
   - docker.io
-package_update: true
-package_upgrade: true
+
 runcmd:
-- docker run --detach --name core --privileged --volume /opt/core/config:/core/config --volume /opt/core/data:/core/data --publish 8080:8080 --publish 8181:8181 --publish 1935:1935 --publish 1936:1936 --publish 6000:6000/udp datarhei/restreamer:latest
+  - systemctl enable --now docker
+  - docker run -d --restart=always --name restreamer -p 8080:8080 -p 8181:8181 -p 1935:1935 --privileged datarhei/restreamer:latest
+
 ```
 Nach wenigen Augenblicken kann bereits die Adminseite des Restreamer über `http://<meineIP>:8080/ui` aufgerufen werden.
 
