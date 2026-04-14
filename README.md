@@ -1,5 +1,10 @@
 # Self-Hosted Livestreaming on a vServer
 
+![Status](https://img.shields.io/badge/Status-Historical-lightgrey)
+![Purpose](https://img.shields.io/badge/Purpose-Inspiration-blue)
+![Focus](https://img.shields.io/badge/Focus-vServer%20Livestreaming-green)
+![Tools](https://img.shields.io/badge/Tools-Restreamer%20%2B%20Owncast-orange)
+
 Dieses Repository ist keine klassische Softwareentwicklung, sondern eine Anregung für Livestreamer, die mit wenig Aufwand einen eigenen vServer aufsetzen und moderne Open-Source-Tools ausprobieren möchten.
 
 Mich fasziniert daran vor allem eines: Dinge, die ich mir um 2018 in Teilen noch selbst bauen oder mühsam zusammensetzen musste, sind heute mit wenigen Befehlen und guten Weboberflächen verfügbar. Ein kleiner vServer reicht oft schon aus, um spannende Streaming-Setups selbst zu betreiben.
