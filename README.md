@@ -1,16 +1,70 @@
-Dieses Repository entstand um 2020 in einer Phase, in der wir begonnen haben, unsere bisher selbst entwickelte Streaming‑Infrastruktur mit modernen Open‑Source‑Tools zu vergleichen. Vor ein paar Jahren haben wir RTMP, SRT und RTSP noch mit eigenen Komponenten umgesetzt – nginx mit dem rtmp‑Modul, ffmpeg‑Pipelines und speziell kompilierten Builds für den Raspberry Pi.
+# Self-Hosted Livestreaming on a vServer
 
-Mit dem Aufkommen neuer Projekte wie MediaMTX und dem datarhei Restreamer wurde es möglich, viele dieser Eigenlösungen durch stabilere und besser integrierte Werkzeuge zu ersetzen. Besonders für unsere RTSP‑basierten PTZ‑Kameras, die wir im Sport‑Livestreaming eingesetzt haben, bot der Restreamer eine interessante Alternative. Dieses Repository dokumentiert erste Tests und Überlegungen dazu, wie sich der Restreamer in solche Workflows einfügt und welche Aufgaben er übernehmen kann.
+Dieses Repository ist keine klassische Softwareentwicklung, sondern eine Anregung für Livestreamer, die mit wenig Aufwand einen eigenen vServer aufsetzen und moderne Open-Source-Tools ausprobieren möchten.
+
+Mich fasziniert daran vor allem eines: Dinge, die ich mir um 2018 in Teilen noch selbst bauen oder mühsam zusammensetzen musste, sind heute mit wenigen Befehlen und guten Weboberflächen verfügbar. Ein kleiner vServer reicht oft schon aus, um spannende Streaming-Setups selbst zu betreiben.
+
+Zwei Werkzeuge verdienen dabei aus meiner Sicht deutlich mehr Aufmerksamkeit: **datarhei Restreamer** und **Owncast**.
+
+## Warum diese Tools spannend sind
+
+### datarhei Restreamer
+Restreamer ist ein sehr zugängliches Tool, um Streams entgegenzunehmen, weiterzuleiten und in verschiedene Richtungen zu verteilen. Gerade für kleinere Produktionen, Vereine, Einzelkämpfer oder Testumgebungen ist es beeindruckend, wie schnell man damit zu einem funktionierenden Setup kommt. Statt vieles selbst zu skripten oder zu verkabeln, bekommt man eine sofort nutzbare Weboberfläche und einen klaren Einstieg in Self-Hosted-Streaming.
+
+### Owncast
+Owncast ist auf eine andere Weise spannend: Es macht unabhängiges Livestreaming mit eigener Plattform möglich. Wer nicht nur auf große Plattformen angewiesen sein möchte, sondern einen eigenen Stream mit eigener Zuschaueroberfläche und Chat betreiben will, bekommt hier ein sehr starkes Open-Source-Werkzeug.
+
+## Warum beides zusammen interessant ist
+
+Restreamer und Owncast stehen für zwei wichtige Seiten moderner Streaming-Infrastruktur:  
+Restreamer hilft beim technischen Umgang mit Signalen und Weiterverteilung, Owncast beim eigenständigen Publizieren für Zuschauer.
+
+Zusammen zeigen diese Tools, wie weit man heute mit einem einfachen vServer und Open Source schon kommt.
+
+## Für wen dieses Repo gedacht ist
+
+Dieses Repository richtet sich an:
+
+- Livestreamer mit technischem Interesse
+- Vereine und kleine Veranstalter
+- Leute, die Self-Hosted-Streaming ausprobieren möchten
+- alle, die einen vServer nicht nur für Webseiten, sondern auch für Medien-Workflows nutzen wollen
+
+## Ziel dieses Repos
+
+Dieses Repo soll nicht das vollständige Thema erklären, sondern Lust machen, die beiden Tools kennenzulernen, schnell einen Server aufzusetzen und eigene erste Erfahrungen zu sammeln.
+
+## Beispiel: kleiner vServer bei Hetzner
+
+Ein einfacher Linux-vServer reicht oft bereits aus, um erste Tests mit Restreamer oder Owncast zu machen.
+
+### Grundidee
+- Ubuntu oder Debian installieren
+- Docker / Docker Compose einrichten
+- Tool starten
+- Weboberfläche aufrufen
+- ersten Stream testen
+
+## Persönliche Einordnung
+
+Für mich ist dieses Repo auch eine Erinnerung daran, wie sehr sich die Streaming-Welt verändert hat.  
+Was früher Eigenbau, viele Einzelschritte oder Spezialwissen erforderte, ist heute teilweise mit erstaunlich guten Open-Source-Tools zugänglich geworden.
+
+Gerade deshalb lasse ich dieses Repo online: Viele Livestreamer kennen solche Werkzeuge noch nicht, obwohl sie für kleine und mittlere Setups enorm hilfreich sein können.
+
+---
 
 # datarhei_Restreamer
 Installation des Datarhei Restreamer auf einem vServer bei Hetzner
 ## Hetzner vServer
 - CX11 (x86 1 vCPUs, 2 GB RAM, 20 GB Disk Lokal) mit Ubuntu 22.04 LTS reicht aus :-)
 - Firewall erstellen und anwenden (UDP: Port 6000 für SRT, TCP 1935-1936 für RTMP, Port 22 für SSH, TCP 8080 und 8181)
+  
 ```
 apt update
 apt install docker.io
 ```
+
 ### datarhei Restreamer
 >Selbstbeschreibung des Anbieters:
 >datarhei Restreamer ist eine moderne Open Source Videostreaming-Plattform, die sich jeder kostenlos installieren kann. Ohne einen Videohoster können Videos von Webcams bis hin zu Fernsehprogrammen zuverlässig live übertragen werden. Wir wollen privaten und professionellen Videocreators dabei helfen, effizienter zu streamen, indem wir einen einfachen, aber dennoch leistungsstarken Service für zum Livestreaming von Videos zur Verfügung stellen. Unsere Mission ist es, ein benutzerfreundliches und leistungsfähiges Produkt für jedermann zum Streamen von Videos zu schaffen.
